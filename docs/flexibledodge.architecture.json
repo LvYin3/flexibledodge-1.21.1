@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Flexible Dodge 模组架构",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "output": "docs/flexibledodge-architecture.html",
+    "views": [
+      {
+        "id": "dodge-request",
+        "label": "一次闪避的请求链",
+        "focus": ["input", "client", "c2s", "system", "s2c"],
+        "note": "从按键到服务端权威位移，再把冷却状态同步回客户端。"
+      },
+      {
+        "id": "perfect-dodge",
+        "label": "两条完美闪避路径",
+        "focus": ["hurt", "proj", "system", "client"],
+        "note": "近战经 hurt 拦截；弹射物先穿透、再由扫掠判定补触发。"
+      },
+      {
+        "id": "client-presentation",
+        "label": "客户端表现层",
+        "focus": ["client", "hud", "clientcfg"],
+        "note": "方向镜像、本地音效、闪避标记与准星下方冷却条。"
+      }
+    ]
+  },
+  "components": [
+    { "id": "input", "type": "frontend", "label": "DodgeKeybinds", "sublabel": "闪避键 · 默认 Left Alt", "pos": [70, 270], "size": [190, 56] },
+    { "id": "clientcfg", "type": "external", "label": "ClientConfig", "sublabel": "标记与冷却条开关", "pos": [400, 90], "size": [210, 56], "tag": "仅本机" },
+    { "id": "client", "type": "frontend", "label": "DodgeClient", "sublabel": "方向 / 本地预测 / CD 镜像", "pos": [400, 240], "size": [210, 110], "tag": "乐观预测" },
+    { "id": "hud", "type": "frontend", "label": "DodgeHud", "sublabel": "闪避标记 + 冷却条", "pos": [400, 450], "size": [210, 56] },
+    { "id": "c2s", "type": "messagebus", "label": "DodgePayload", "sublabel": "C2S · 闪避方向 yaw", "pos": [740, 170], "size": [210, 56], "tag": "自定义 payload" },
+    { "id": "s2c", "type": "messagebus", "label": "冷却 / 完美闪避 payload", "sublabel": "S2C · 冷却校正与完美闪避", "pos": [740, 430], "size": [210, 56], "tag": "自定义 payload" },
+    { "id": "proj", "type": "security", "label": "EntityMixin", "sublabel": "canBeHitByProjectile", "pos": [1060, 80], "size": [220, 56] },
+    { "id": "system", "type": "backend", "label": "DodgeSystem", "sublabel": "位移 / 无敌帧 / 连闪 CD", "pos": [1060, 260], "size": [220, 104], "tag": "服务端权威" },
+    { "id": "hurt", "type": "security", "label": "LivingEntityMixin", "sublabel": "hurt @HEAD · 近战", "pos": [1060, 488], "size": [220, 56] }
+  ],
+  "boundaries": [
+    { "kind": "region", "label": "客户端 · Client", "wraps": ["input", "clientcfg", "client", "hud"], "pad": 20 },
+    { "kind": "region", "label": "网络层 · 自定义 payload", "wraps": ["c2s", "s2c"], "pad": 20 },
+    { "kind": "region", "label": "服务端 · 权威", "wraps": ["proj", "system", "hurt"], "pad": 20 }
+  ],
+  "connections": [
+    { "from": "input", "to": "client", "label": "消费按键", "variant": "emphasis" },
+    { "from": "clientcfg", "to": "client", "label": "表现参数", "labelDy": 24 },
+    { "from": "client", "to": "hud", "label": "冷却条进度", "labelDy": 24 },
+    { "from": "client", "to": "c2s", "label": "闪避请求" },
+    { "from": "c2s", "to": "system", "label": "tryDodge()", "variant": "emphasis" },
+    { "from": "system", "to": "s2c", "label": "冷却同步" },
+    { "from": "s2c", "to": "client", "label": "冷却校正" },
+    { "from": "proj", "to": "system", "label": "扫掠判定", "fromSide": "bottom", "toSide": "top", "labelDy": 40 },
+    { "from": "hurt", "to": "system", "label": "拦截伤害", "fromSide": "top", "toSide": "bottom" }
+  ],
+  "cards": [
+    { "dot": "cyan", "title": "权威与表现分离", "items": ["位移、伤害与冷却都由 DodgeSystem 决定", "客户端只做方向预测、音效与冷却条"] },
+    { "dot": "rose", "title": "两条完美闪避路径", "items": ["近战：LivingEntityMixin 在 hurt 头部取消伤害", "弹射物：穿透 + 扫掠判定补触发"] },
+    { "dot": "emerald", "title": "驱动、资源与扩展点", "items": ["PlayerTickEvent / EntityTickEvent.Post 驱动", "ServerConfig 同步、ClientConfig 本机；事件供联动"] }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "dodge": {
+    "sounds": [
+      "flexibledodge:dodge",
+      "flexibledodge:dodge1",
+      "flexibledodge:dodge2"
+    ]
+  },
+  "perfect_dodge": {
+    "sounds": [
+      "flexibledodge:perfect_dodge",
+      "flexibledodge:perfect_dodge1",
+      "flexibledodge:perfect_dodge2"
+    ]
+  }
+}

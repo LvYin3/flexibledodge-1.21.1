@@ -1,0 +1,32 @@
+{
+  "fml.menu.mods.info.description.flexibledodge": "Flexible Dodge（灵活闪避）——独立的闪避模组。按闪避键向移动方向位移并获得短暂无敌帧：无敌帧内被命中即触发完美闪避，伤害完全取消，弹射物则直接穿过身体。连闪冷却会逐次累积并封顶，短暂停顿后重置；准星下方会显示一条简洁的冷却条。",
+  "flexibledodge.configuration.title": "灵活闪避 配置",
+  "flexibledodge.configuration.section.flexibledodge.server.toml": "服务端配置（server.toml）",
+  "flexibledodge.configuration.section.flexibledodge.server.toml.title": "服务端配置",
+  "flexibledodge.configuration.section.flexibledodge.client.toml": "客户端配置（client.toml）",
+  "flexibledodge.configuration.section.flexibledodge.client.toml.title": "客户端配置",
+
+  "config.flexibledodge.dodgeInvulnerabilityTime": "闪避无敌帧时长",
+  "config.flexibledodge.dodgeInvulnerabilityTime.tooltip": "闪避无敌帧时长（秒）。默认 0.2。若长于闪避位移持续时间，会被压缩到与位移同时结束。",
+  "config.flexibledodge.dodgeSpeed": "闪避速度",
+  "config.flexibledodge.dodgeSpeed.tooltip": "闪避移动速度（格/秒）。默认 10.0。",
+  "config.flexibledodge.dodgeDistance": "闪避距离",
+  "config.flexibledodge.dodgeDistance.tooltip": "闪避距离（格）。默认 1.0。这是指数衰减的理论总位移；由于初始脉冲与随后一 tick 都按峰值速度施加，实际滑行约 1.4 格。该值与闪避速度共同决定位移持续时间。",
+  "config.flexibledodge.dodgeCooldownStep": "连闪冷却步长",
+  "config.flexibledodge.dodgeCooldownStep.tooltip": "连闪递增冷却步长（秒）：第 1 次闪避无冷却，此后每次 +该值，直到冷却上限。冷却从「上一次闪避位移完全结束」起算。默认 0.1。",
+  "config.flexibledodge.dodgeCooldownMax": "连闪冷却上限",
+  "config.flexibledodge.dodgeCooldownMax.tooltip": "连闪冷却上限（秒）。默认 0.6。",
+  "config.flexibledodge.dodgeCooldownResetTime": "连闪计数重置时间",
+  "config.flexibledodge.dodgeCooldownResetTime.tooltip": "距上一次闪避位移结束超过该时长后再次闪避，冷却重新从第 1 次算起（秒）。默认 2.0。",
+  "config.flexibledodge.dodgeMarkerEnabled": "显示闪避指示标记",
+  "config.flexibledodge.dodgeMarkerEnabled.tooltip": "显示闪避指示标记（< >，完美闪避为 <<< >>>）。默认开启。",
+  "config.flexibledodge.dodgeMarkerTime": "闪避标识时长",
+  "config.flexibledodge.dodgeMarkerTime.tooltip": "闪避指示标记时长（秒）。< > 标记从出现到完全淡出的持续时间。默认 0.2。",
+  "config.flexibledodge.dodgeCooldownBarEnabled": "显示闪避冷却条",
+  "config.flexibledodge.dodgeCooldownBarEnabled.tooltip": "在准星下方显示闪避冷却条（半透明，样式与原版攻击冷却条、准星一致）。默认开启。",
+  "config.flexibledodge.dodgeCooldownBarFlashTime": "完美闪避闪光时长",
+  "config.flexibledodge.dodgeCooldownBarFlashTime.tooltip": "完美闪避时冷却条以满条状态闪一下的时长（秒）。默认 0.15。",
+
+  "key.categories.flexibledodge": "灵活闪避",
+  "key.flexibledodge.dodge": "闪避"
+}

@@ -1,0 +1,31 @@
+{
+  "flexibledodge.configuration.title": "Flexible Dodge Configs",
+  "flexibledodge.configuration.section.flexibledodge.server.toml": "Server Configs (server.toml)",
+  "flexibledodge.configuration.section.flexibledodge.server.toml.title": "Server Configs",
+  "flexibledodge.configuration.section.flexibledodge.client.toml": "Client Configs (client.toml)",
+  "flexibledodge.configuration.section.flexibledodge.client.toml.title": "Client Configs",
+
+  "config.flexibledodge.dodgeInvulnerabilityTime": "Dodge Invulnerability Time",
+  "config.flexibledodge.dodgeInvulnerabilityTime.tooltip": "Dodge invulnerability frames duration in seconds. Default: 0.2. If longer than the dodge's movement duration it is clamped to end with the movement.",
+  "config.flexibledodge.dodgeSpeed": "Dodge Speed",
+  "config.flexibledodge.dodgeSpeed.tooltip": "Dodge movement speed in blocks per second. Default: 10.0.",
+  "config.flexibledodge.dodgeDistance": "Dodge Distance",
+  "config.flexibledodge.dodgeDistance.tooltip": "Dodge distance in blocks. Default: 1.0. This is the geometric-decay total; the actual dash travels slightly more (about 1.4 blocks at 1.0) because the initial pulse and the following tick are both applied at peak speed. With dodgeSpeed it determines the dodge duration.",
+  "config.flexibledodge.dodgeCooldownStep": "Consecutive Dodge Cooldown Step",
+  "config.flexibledodge.dodgeCooldownStep.tooltip": "Cooldown step per consecutive dodge in seconds: the 1st dodge has no cooldown, each following dodge adds this amount up to the cap. Measured from the moment the previous dodge's movement fully ended. Default: 0.1.",
+  "config.flexibledodge.dodgeCooldownMax": "Consecutive Dodge Cooldown Cap",
+  "config.flexibledodge.dodgeCooldownMax.tooltip": "Upper bound of the consecutive dodge cooldown in seconds. Default: 0.6.",
+  "config.flexibledodge.dodgeCooldownResetTime": "Consecutive Dodge Counter Reset Time",
+  "config.flexibledodge.dodgeCooldownResetTime.tooltip": "Dodging more than this many seconds after the previous dodge's movement ended restarts the cooldown ramp from the 1st dodge. Default: 2.0.",
+  "config.flexibledodge.dodgeMarkerEnabled": "Show Dodge Indicator Markers",
+  "config.flexibledodge.dodgeMarkerEnabled.tooltip": "Show the dodge indicator markers (< >, and <<< >>> for a perfect dodge). Default: true.",
+  "config.flexibledodge.dodgeMarkerTime": "Dodge Indicator Duration",
+  "config.flexibledodge.dodgeMarkerTime.tooltip": "Dodge indicator marker duration in seconds. How long the < > markers stay visible. Default: 0.2.",
+  "config.flexibledodge.dodgeCooldownBarEnabled": "Show Dodge Cooldown Bar",
+  "config.flexibledodge.dodgeCooldownBarEnabled.tooltip": "Show the dodge cooldown bar below the crosshair (translucent, styled after the vanilla attack indicator and crosshair). Default: true.",
+  "config.flexibledodge.dodgeCooldownBarFlashTime": "Perfect Dodge Bar Flash Time",
+  "config.flexibledodge.dodgeCooldownBarFlashTime.tooltip": "Duration of the full-bar flash shown on a perfect dodge, in seconds. Default: 0.15.",
+
+  "key.categories.flexibledodge": "Flexible Dodge",
+  "key.flexibledodge.dodge": "Dodge"
+}
