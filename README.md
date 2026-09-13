@@ -92,3 +92,7 @@
 
 本项目使用 Mojang 官方映射名。相关许可证见
 https://github.com/NeoForged/NeoForm/blob/main/Mojang.md
+
+## 许可证
+
+本项目以 MIT 许可证发布，全文见 [LICENSE](LICENSE)。

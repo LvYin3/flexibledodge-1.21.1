@@ -166,6 +166,11 @@ sourceSets.main.resources.srcDir generateModMetadata
 // To avoid having to run "generateModMetadata" manually, make it run on every project reload
 neoForge.ideSyncTask generateModMetadata
 
+// MIT 要求随软件的副本附带版权声明与许可全文，所以把仓库根目录的 LICENSE 一并打进 jar。
+tasks.named('processResources', ProcessResources).configure {
+    from('LICENSE') { into 'META-INF' }
+}
+
 // Example configuration to allow publishing using the maven-publish plugin
 publishing {
     publications {
